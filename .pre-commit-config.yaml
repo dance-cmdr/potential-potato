@@ -72,9 +72,11 @@ repos:
       - entry: mypy --explicit-package-base
         id: mypy
         language: system
+        files: ^src
         name: mypy (python)
         stages:
           - push
+          - commit
         types:
           - python
     repo: local
