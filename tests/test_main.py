@@ -1,10 +1,11 @@
 """test main module
 """
+
 import sys
 
-from main import hello_world
-
 sys.path.append("src")
+
+from main import hello_world
 
 
 def test_main():
