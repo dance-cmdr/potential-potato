@@ -1,0 +1,82 @@
+default_language_version:
+  python: python3.11
+repos:
+- hooks:
+  - id: check-yaml
+    stages:
+    - commit
+  - id: end-of-file-fixer
+    stages:
+    - commit
+  - id: trailing-whitespace
+    stages:
+    - commit
+  repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+- hooks:
+  - args:
+    - --profile
+    - black
+    - --filter-files
+    entry: isort
+    id: isort
+    language: system
+    name: isort (python)
+    stages:
+    - commit
+    types:
+    - python
+  repo: local
+- hooks:
+  - entry: black
+    id: black
+    language: system
+    name: black (python)
+    stages:
+    - commit
+    types:
+    - python
+  repo: local
+- hooks:
+  - args:
+    - -rn
+    - -sn
+    - --output-format=colorized
+    entry: pylint
+    id: pylint
+    language: system
+    name: pylint (python)
+    stages:
+    - commit
+    types:
+    - python
+  repo: local
+- hooks:
+  - entry: mypy --explicit-package-base
+    id: mypy
+    language: system
+    name: mypy (python)
+    stages:
+    - push
+    types:
+    - python
+  repo: local
+- hooks:
+  - always_run: true
+    entry: coverage run -m pytest tests/ --cov=src/
+    id: pytest-check
+    language: system
+    name: pytest-check
+    pass_filenames: false
+    stages:
+    - push
+    types:
+    - python
+  repo: local
+- hooks:
+  - id: commitizen
+  - id: commitizen-branch
+    stages:
+    - push
+  repo: https://github.com/commitizen-tools/commitizen
+  rev: v3.12.0
