@@ -54,12 +54,12 @@ repos:
     repo: local
   - hooks:
       - args:
-          - tests/
           - -rn
           - -sn
           - --output-format=colorized
           - --rcfile=.pylintrc_tests
         entry: pylint
+        files: ^tests
         id: pylint-tests
         language: system
         name: pylint tests (python)
