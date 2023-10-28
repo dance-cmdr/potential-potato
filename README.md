@@ -1,6 +1,10 @@
 # potential-potato
 
-A python script to scrape data from IT Jobs
+This is a boilerplate to start python script projects.
+
+It contains a number of tools I find important for a basic Developer Experience and I definetely recomend everyone to check out or find their own alternatives.
+
+[See the pipfile dev dependencies for more information](./Pipfile)
 
 ## Quick Start
 
